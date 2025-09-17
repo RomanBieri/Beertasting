@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: '/api',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -23,7 +23,6 @@ const apiService = {
   deleteNote(noteId) {
     return apiClient.delete(`/tasting/notes/${noteId}`);
   },
-  // NEUE FUNKTION ZUM AKTUALISIEREN
   updateNote(noteId, noteData) {
     return apiClient.put(`/tasting/notes/${noteId}`, noteData);
   },
