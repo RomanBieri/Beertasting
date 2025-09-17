@@ -14,13 +14,12 @@ const connectDB = async () => {
     await mongoose.connect(process.env.MONGO_URI);
     console.log('Erfolgreich mit MongoDB verbunden');
   } catch (err) {
-    console.error('Verbindungsfehler zur Datenbank:', err.message);
+    console.error('Verbindungsfehler:', err.message);
     process.exit(1);
   }
 };
 connectDB();
 
-// KORREKTUR: Wir fügen das '/api' Präfix hier wieder hinzu.
 app.use('/api/auth', require('./routes/auth.js'));
 app.use('/api/tasting', require('./routes/tasting.js'));
 
