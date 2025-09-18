@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: '/api',
+  // FÜGE HIER DIE URL DEINES RENDER-BACKENDS EIN
+  baseURL: 'https://beertasting-backend.onrender.com', 
   headers: {
     'Content-Type': 'application/json',
   },
