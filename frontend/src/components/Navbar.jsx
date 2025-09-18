@@ -23,20 +23,22 @@ function Navbar() {
         BeerTasting
       </Link>
 
-      {user ? (
-        <>
-          <Link to="/">Meine Biere</Link>
-          <Link to="/add-beer">Bier Hinzufügen</Link>
-          <div className="navbar-auth" style={{ marginLeft: "auto" }}>
+      <div className="navbar-auth-section">
+        {user ? (
+          // Wenn ein Benutzer eingeloggt ist:
+          <>
+            <Link to="/">Meine Biere</Link>
+            <Link to="/add-beer">Bier Hinzufügen</Link>
             <button onClick={handleLogout}>Logout ({user.username})</button>
-          </div>
-        </>
-      ) : (
-        <div style={{ marginLeft: "auto", display: "flex", gap: "1.5rem" }}>
-          <Link to="/register">Registrieren</Link>
-          <Link to="/login">Login</Link>
-        </div>
-      )}
+          </>
+        ) : (
+          // Wenn kein Benutzer eingeloggt ist:
+          <>
+            <Link to="/register">Registrieren</Link>
+            <Link to="/login">Login</Link>
+          </>
+        )}
+      </div>
     </nav>
   );
 }

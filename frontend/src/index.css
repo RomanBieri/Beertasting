@@ -1,27 +1,18 @@
-/* Globale Resets und Schriftarten */
 :root {
-  --primary-color: #007bff; /* Ein moderneres Blau */
-  --dark-color: #212529;
+  --primary-color: #007bff;
+  --dark-color: #2c3e50;
   --light-color: #f8f9fa;
   --background-color: #e9ecef;
   --border-radius: 8px;
   --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+* { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   background-color: var(--background-color);
   color: var(--dark-color);
   line-height: 1.6;
 }
-
-/* Haupt-Container für die Zentrierung */
 .container {
   max-width: 700px;
   margin: 2rem auto;
@@ -30,47 +21,24 @@ body {
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
 }
-
-/* --- NEUES, VERBESSERTES FORMULAR-STYLING --- */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem; /* Mehr Abstand zwischen den Feldern */
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem; /* Abstand zwischen Label und Input */
-}
-
-label {
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: #495057;
-}
-
-input[type="text"],
-input[type="password"],
-input[type="email"],
-textarea {
+form { display: flex; flex-direction: column; gap: 1.5rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+label { font-weight: 600; font-size: 0.9rem; color: #495057; }
+input[type="text"], input[type="password"], input[type="email"], textarea {
   width: 100%;
-  padding: 12px 15px; /* Grössere Felder */
+  padding: 12px 15px;
   border: 1px solid #ced4da;
   border-radius: var(--border-radius);
   font-size: 1rem;
   transition: border-color 0.3s, box-shadow 0.3s;
   background-color: #f8f9fa;
 }
-
-input:focus,
-textarea:focus {
+input:focus, textarea:focus {
   outline: none;
   border-color: var(--primary-color);
   box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.15);
   background-color: #fff;
 }
-
 button {
   padding: 12px 20px;
   background-color: var(--primary-color);
@@ -82,21 +50,44 @@ button {
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
 }
-
 button:hover {
   background-color: #0069d9;
   transform: translateY(-2px);
 }
-
-/* ... (der Rest des CSS bleibt gleich, hier zur Vollständigkeit) ... */
-.navbar { /* ... */ }
-.navbar a { /* ... */ }
-.navbar-brand { /* ... */ }
-.navbar-auth button { /* ... */ }
-.beer-list { /* ... */ }
-.beer-card { /* ... */ }
-h2 {
-  text-align: center;
-  margin-bottom: 2rem;
-  color: var(--dark-color);
+/* --- STYLES FÜR DIE NAVBAR --- */
+.navbar {
+  background: var(--dark-color);
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+.navbar-brand {
+  font-size: 1.5rem;
+  margin-right: auto; /* Schiebt alles andere nach rechts */
+}
+.navbar-auth-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.navbar-auth-section button {
+  background: none;
+  font-size: 1rem;
+  padding: 0;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+/* --- (Restliche Styles) --- */
+.beer-list { list-style-type: none; padding: 0; display: flex; flex-direction: column; gap: 1.5rem; }
+.beer-card { padding: 1.5rem; border: 1px solid #ddd; border-radius: var(--border-radius); box-shadow: var(--box-shadow); background: #fff; }
+.beer-card strong { color: var(--primary-color); font-size: 1.2rem; }
+h2 { text-align: center; margin-bottom: 2rem; color: var(--dark-color); }
