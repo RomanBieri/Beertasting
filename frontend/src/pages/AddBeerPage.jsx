@@ -1,115 +1,73 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import apiService from "../services/api.service.js";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import apiService from '../services/api.service.js';
 
 function AddBeerPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    brewery: "",
-    style: "",
-    rating: 3,
-    comment: "",
-  });
-
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [formData, setFormData] = useState({ name: '', brewery: '', style: '', rating: 3, comment: '' });
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) setUser(JSON.parse(storedUser));
   }, []);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
-    setSuccess("");
-
     if (!user) {
-      setError("Du musst eingeloggt sein, um ein Bier hinzuzufügen.");
+      setError('Bitte einloggen, um eine Bewertung abzugeben.');
       return;
     }
-
     try {
-      // KORREKTUR HIER: Wir verwenden 'user.id' anstatt 'user._id'
-      const noteData = { ...formData, userId: user.id };
-
-      await apiService.createTastingNote(noteData);
-
-      setSuccess("Bier erfolgreich hinzugefügt! Du wirst weitergeleitet...");
-      setTimeout(() => {
-        navigate("/");
-      }, 2000);
+      await apiService.createTastingNote({ ...formData, userId: user.id });
+      setSuccess('Bewertung erfolgreich gespeichert! Du wirst weitergeleitet...');
+      setTimeout(() => navigate('/'), 2000);
     } catch (err) {
-      console.error("Fehler beim Hinzufügen des Bieres:", err);
-      setError("Ein Fehler ist aufgetreten. Bitte versuche es erneut.");
+      // KORRIGIERTER CATCH-BLOCK
+      console.error("Fehler beim Hinzufügen:", err);
+      setError(err.response?.data?.message || 'Ein Fehler ist aufgetreten.');
     }
   };
 
   if (!user) {
-    return <div>Bitte logge dich ein, um ein Bier zu bewerten.</div>;
+    return <div style={{ textAlign: 'center' }}><h2>Bitte einloggen</h2><p>Du musst eingeloggt sein, um ein Bier zu bewerten.</p></div>;
   }
 
   return (
     <div>
-      <h2>Neues Bier bewerten</h2>
+      <h2>Bewerte ein neues Bier</h2>
       <form onSubmit={handleSubmit}>
-        <input
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Name des Bieres"
-          required
-        />
-        <input
-          name="brewery"
-          value={formData.brewery}
-          onChange={handleChange}
-          placeholder="Brauerei"
-          required
-        />
-        <input
-          name="style"
-          value={formData.style}
-          onChange={handleChange}
-          placeholder="Bierstil"
-          required
-        />
-        <div>
-          <label>Bewertung: {formData.rating} / 5</label>
-          <input
-            name="rating"
-            type="range"
-            min="1"
-            max="5"
-            value={formData.rating}
-            onChange={handleChange}
-            required
-          />
+        <div className="form-group">
+          <label htmlFor="name">Name des Bieres</label>
+          <input id="name" name="name" value={formData.name} onChange={handleChange} placeholder="z.B. Guinness Draught" required />
         </div>
-        <textarea
-          name="comment"
-          value={formData.comment}
-          onChange={handleChange}
-          placeholder="Dein Kommentar..."
-        />
+        <div className="form-group">
+          <label htmlFor="brewery">Brauerei</label>
+          <input id="brewery" name="brewery" value={formData.brewery} onChange={handleChange} placeholder="z.B. St. James's Gate Brewery" required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="style">Bierstil</label>
+          <input id="style" name="style" value={formData.style} onChange={handleChange} placeholder="z.B. Stout" required />
+        </div>
+        <div className="form-group">
+          <label>Bewertung: {formData.rating} / 5 Sterne</label>
+          <input name="rating" type="range" min="1" max="5" value={formData.rating} onChange={handleChange} required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="comment">Dein Kommentar (optional)</label>
+          <textarea id="comment" name="comment" value={formData.comment} onChange={handleChange} placeholder="Beschreibe deinen Eindruck..." />
+        </div>
         <button type="submit">Bewertung speichern</button>
       </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {success && <p style={{ color: "green" }}>{success}</p>}
+      {error && <p style={{ color: 'red', marginTop: '1rem', textAlign: 'center' }}>{error}</p>}
+      {success && <p style={{ color: 'green', marginTop: '1rem', textAlign: 'center' }}>{success}</p>}
     </div>
   );
 }
-
 export default AddBeerPage;
