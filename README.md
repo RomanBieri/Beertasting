@@ -1,3 +1,6 @@
+Absolut. Hier ist der gesamte Code für deine `README.md`-Datei in einem einzigen Block, bereit zum Kopieren und Einfügen.
+
+````markdown
 # BeerTasting - Ein digitales Biertagebuch
 
 BeerTasting ist eine Full-Stack-Webanwendung, die als digitales Tagebuch für Bierliebhaber dient. Benutzer können sich registrieren, einloggen und ihre Bier-Verkostungen verwalten, indem sie Bewertungen erstellen, ansehen, bearbeiten und löschen.
@@ -54,51 +57,68 @@ Klone dieses Repository auf deinen lokalen Computer:
 ```bash
 git clone [https://github.com/RomanBieri/Beertasting.git](https://github.com/RomanBieri/Beertasting.git)
 cd Beertasting
+````
 
----
+### 2\. Backend-Setup
 
-### 2. Backend-Setup
-Navigiere in den Backend-Ordner:
-Bash
-cd api
+1.  **Navigiere in den Backend-Ordner:**
 
-### Umgebungsvariablen erstellen:
-Erstelle eine Datei namens .env im api-Ordner und füge deine MongoDB-Verbindungs-URL hinzu:
-MONGO_URI=mongodb+srv://DEIN_BENUTZERNAME:DEIN_PASSWORT@deincluster...
+    ```bash
+    cd api
+    ```
 
-### Abhängigkeiten installieren:
-Bash
-npm install
+2.  **Umgebungsvariablen erstellen:**
+    Erstelle eine Datei namens `.env` im `api`-Ordner und füge deine MongoDB-Verbindungs-URL hinzu:
 
-### Backend-Server starten:
-Bash
-npm start
+    ```
+    MONGO_URI=mongodb+srv://DEIN_BENUTZERNAME:DEIN_PASSWORT@deincluster...
+    ```
 
-Der Server läuft jetzt auf http://localhost:5000.
+3.  **Abhängigkeiten installieren:**
 
----
+    ```bash
+    npm install
+    ```
 
-### 3. Frontend-Setup
-Öffne ein neues, separates Terminal.
+4.  **Backend-Server starten:**
 
-Navigiere in den Frontend-Ordner:
-Bash
-cd frontend
+    ```bash
+    npm start
+    ```
 
-### Abhängigkeiten installieren:
-Bash
-npm install
+    Der Server läuft jetzt auf `http://localhost:5000`.
 
-### Frontend-App starten:
-Bash
-npm run dev
+### 3\. Frontend-Setup
 
-### Die React-Anwendung ist jetzt unter http://localhost:5173 (oder einem ähnlichen Port) erreichbar.
+1.  **Öffne ein neues, separates Terminal.**
 
----
+2.  **Navigiere in den Frontend-Ordner:**
 
-### Das Projekt ist als Monorepo strukturiert, das Backend und Frontend in getrennten Ordnern enthält:
+    ```bash
+    cd frontend
+    ```
 
+3.  **Abhängigkeiten installieren:**
+
+    ```bash
+    npm install
+    ```
+
+4.  **Frontend-App starten:**
+
+    ```bash
+    npm run dev
+    ```
+
+    Die React-Anwendung ist jetzt unter `http://localhost:5173` (oder einem ähnlichen Port) erreichbar.
+
+-----
+
+## Projektstruktur
+
+Das Projekt ist als Monorepo strukturiert, das Backend und Frontend in getrennten Ordnern enthält:
+
+```
 ├── api/          # Der Node.js/Express.js Backend-Server
 │   ├── controllers/
 │   ├── models/
@@ -111,3 +131,7 @@ npm run dev
     │   ├── pages/
     │   └── services/
     └── ...
+```
+
+```
+```
