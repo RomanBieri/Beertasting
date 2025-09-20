@@ -1,5 +1,3 @@
-Absolut. Hier ist der gesamte Code für deine `README.md`-Datei in einem einzigen Block, bereit zum Kopieren und Einfügen.
-
 ````markdown
 # BeerTasting - Ein digitales Biertagebuch
 
