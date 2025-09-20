@@ -49,13 +49,14 @@ Um das Projekt lokal auf deinem Computer auszuführen, befolge diese Schritte.
 * [Node.js](https://nodejs.org/) (Version 18 oder höher)
 * Ein kostenloses [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) Konto für die Datenbank.
 
-### 1. Projekt klonen
-
-Klone dieses Repository auf deinen lokalen Computer:
-```bash
-git clone [https://github.com/RomanBieri/Beertasting.git](https://github.com/RomanBieri/Beertasting.git)
-cd Beertasting
 ````
+### 1\. Projekt klonen
+
+1.   Klone dieses Repository auf deinen lokalen Computer:
+   ```bash
+   git clone [https://github.com/RomanBieri/Beertasting.git](https://github.com/RomanBieri/Beertasting.git)
+   cd Beertasting
+   ````
 
 ### 2\. Backend-Setup
 
