@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 function BeerDetailPage() {
-  // useParams würde verwendet, um die ID aus der URL zu lesen, z.B. /beer/123
+
   const { beerId } = useParams();
 
   return (

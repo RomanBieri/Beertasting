@@ -5,7 +5,7 @@ import { TastingNote } from '../models/tastingNote.model.js';
 
 const router = express.Router();
 
-// CREATE: Eine neue Verkostungsnotiz erstellen (POST /api/tasting-notes)
+// CREATE: 
 router.post('/', async (req, res) => {
     try {
         const { rating, notes, beerId, userId } = req.body;
@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-// READ ALL FOR A BEER: Alle Notizen für ein Bier abrufen (GET /api/tasting-notes/beer/:beerId)
+// READ ALL FOR A BEER: 
 router.get('/beer/:beerId', async (req, res) => {
     try {
         const notes = await TastingNote.find({ beerId: req.params.beerId }).populate('userId', 'username');
@@ -30,7 +30,7 @@ router.get('/beer/:beerId', async (req, res) => {
     }
 });
 
-// UPDATE: Eine Notiz aktualisieren (PUT /api/tasting-notes/:id)
+// UPDATE: 
 router.put('/:id', async (req, res) => {
     try {
         const updatedNote = await TastingNote.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -43,7 +43,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-// DELETE: Eine Notiz löschen (DELETE /api/tasting-notes/:id)
+// DELETE: 
 router.delete('/:id', async (req, res) => {
     try {
         const deletedNote = await TastingNote.findByIdAndDelete(req.params.id);

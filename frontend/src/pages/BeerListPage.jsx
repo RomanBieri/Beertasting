@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import apiService from '../services/api.service.js';
 import { Link } from 'react-router-dom';
-import { AxiosError } from 'axios'; // WICHTIGER IMPORT
+import { AxiosError } from 'axios'; 
 
 function BeerListPage() {
   const [notes, setNotes] = useState([]);
@@ -22,7 +22,7 @@ function BeerListPage() {
         const response = await apiService.getNotesForUser(userData.id);
         setNotes(response.data);
       } catch (err) {
-        // KORRIGIERTER CATCH-BLOCK
+       
         console.error("Fehlerdetails beim Laden der Liste:", err);
         if (err instanceof AxiosError && err.response) {
           setError(err.response.data.message || 'Fehler beim Laden der Biere.');
@@ -42,7 +42,7 @@ function BeerListPage() {
         await apiService.deleteNote(noteId);
         setNotes(notes.filter((note) => note._id !== noteId));
       } catch (err) {
-        // KORRIGIERTER CATCH-BLOCK
+       
         console.error("Fehler beim Löschen:", err);
         if (err instanceof AxiosError && err.response) {
           setError(err.response.data.message || "Die Bewertung konnte nicht gelöscht werden.");

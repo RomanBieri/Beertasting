@@ -29,7 +29,7 @@ function AddBeerPage() {
       setSuccess('Bewertung erfolgreich gespeichert! Du wirst weitergeleitet...');
       setTimeout(() => navigate('/'), 2000);
     } catch (err) {
-      // KORRIGIERTER CATCH-BLOCK
+
       console.error("Fehler beim Hinzufügen:", err);
       setError(err.response?.data?.message || 'Ein Fehler ist aufgetreten.');
     }

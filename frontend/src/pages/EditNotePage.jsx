@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import apiService from "../services/api.service.js";
-import { AxiosError } from "axios"; // WICHTIGER IMPORT
-
+import { AxiosError } from "axios"; 
 function EditNotePage() {
   const { noteId } = useParams();
   const navigate = useNavigate();
@@ -15,8 +14,7 @@ function EditNotePage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    // Diese Methode zum Laden der Daten ist nicht ideal, da sie bei einem Refresh der Seite fehlschlägt.
-    // Für den MVP behalten wir sie bei, aber in einer echten App müsste hier ein API-Call stehen.
+    
     if (location.state && location.state.note) {
       const { note } = location.state;
       setBeerName(note.beer.name);
@@ -37,7 +35,7 @@ function EditNotePage() {
       await apiService.updateNote(noteId, { rating, comment });
       navigate("/"); // Nach Erfolg zurück zur Liste
     } catch (err) {
-      // KORRIGIERTER CATCH-BLOCK
+      
       console.error("Fehler beim Speichern:", err);
       if (err instanceof AxiosError && err.response) {
         setError(

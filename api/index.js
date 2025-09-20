@@ -22,7 +22,6 @@ connectDB();
 app.use('/auth', require('./routes/auth.js'));
 app.use('/tasting', require('./routes/tasting.js'));
 
-// Render stellt automatisch eine PORT-Umgebungsvariable zur Verfügung.
 const PORT = process.env.PORT || 5000; 
 
 app.listen(PORT, () => {

@@ -5,7 +5,7 @@ import { Beer } from '../models/beer.model.js';
 
 const router = express.Router();
 
-// CREATE: Ein neues Bier anlegen (POST /api/beers)
+// CREATE: 
 router.post('/', async (req, res) => {
   try {
     const { name, brewery, style } = req.body;
@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// READ ALL: Alle Biere abrufen (GET /api/beers)
+// READ ALL: 
 router.get('/', async (req, res) => {
   try {
     const beers = await Beer.find();
@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// READ ONE: Ein spezifisches Bier abrufen (GET /api/beers/:id)
+// READ ONE: 
 router.get('/:id', async (req, res) => {
   try {
     const beer = await Beer.findById(req.params.id);

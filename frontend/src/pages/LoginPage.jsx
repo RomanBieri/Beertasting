@@ -18,7 +18,7 @@ function LoginPage() {
     setError('');
     try {
       const response = await apiService.login(formData);
-      // Speichere das ganze Benutzer-Objekt, da wir keinen Token mehr bekommen
+      
       localStorage.setItem('user', JSON.stringify(response.data));
       navigate('/'); // Zur Hauptseite weiterleiten
     } catch (err) {

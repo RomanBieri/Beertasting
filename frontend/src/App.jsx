@@ -6,7 +6,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import AddBeerPage from './pages/AddBeerPage';
 import BeerDetailPage from './pages/BeerDetailPage';
-import EditNotePage from './pages/EditNotePage'; // <-- NEUER IMPORT
+import EditNotePage from './pages/EditNotePage'; 
 import Navbar from './components/Navbar';
 
 function App() {

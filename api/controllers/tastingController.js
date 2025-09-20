@@ -48,7 +48,7 @@ exports.deleteNote = async (req, res) => {
   }
 };
 
-// NEUE FUNKTION ZUM AKTUALISIEREN
+
 exports.updateNote = async (req, res) => {
   try {
     const { noteId } = req.params;
@@ -57,8 +57,8 @@ exports.updateNote = async (req, res) => {
     const updatedNote = await TastingNote.findByIdAndUpdate(
       noteId,
       { rating, comment },
-      { new: true, runValidators: true } // {new: true} gibt das aktualisierte Dokument zurück
-    ).populate('beer'); // .populate() hinzugefügt, um die vollen Bier-Daten zurückzugeben
+      { new: true, runValidators: true } 
+    ).populate('beer'); 
 
     if (!updatedNote) {
       return res.status(404).json({ message: 'Bewertung nicht gefunden.' });

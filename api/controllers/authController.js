@@ -20,7 +20,7 @@ exports.register = async (req, res) => {
     await user.save();
     res.status(201).json({ message: "Benutzer erfolgreich registriert." });
   } catch (error) {
-    // DIESE ZEILE IST NEU: Sie zeigt den echten Fehler im Backend-Terminal an.
+    
     console.error("SERVER-ABSTURZ BEI REGISTRIERUNG:", error);
 
     res.status(500).json({ message: "Serverfehler bei der Registrierung." });
@@ -51,7 +51,7 @@ exports.login = async (req, res) => {
       username: user.username,
     });
   } catch (error) {
-    // Wir fügen die Log-Zeile zur Sicherheit auch hier hinzu.
+  
     console.error("SERVER-ABSTURZ BEIM LOGIN:", error);
     res.status(500).json({ message: "Serverfehler beim Login." });
   }

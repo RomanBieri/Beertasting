@@ -2,7 +2,7 @@ import express from 'express';
 import { User } from '../models/user.model.js';
 const router = express.Router();
 
-// POST /api/users/register
+
 router.post('/register', async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -17,7 +17,7 @@ router.post('/register', async (req, res) => {
     }
 });
 
-// POST /api/users/login
+
 router.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
